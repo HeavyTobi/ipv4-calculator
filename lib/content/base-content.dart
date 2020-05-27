@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class BaseContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       child: Center(
-        child: Text('Hey there, it\'s me again!'),
+        child: PlatformText(
+          'Gonidschiwa',
+        ),
       ),
     );
   }
