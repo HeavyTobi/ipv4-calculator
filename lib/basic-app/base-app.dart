@@ -11,11 +11,11 @@ class BaseApp extends StatelessWidget {
     return PlatformApp(
       title: title,
       android: (_) => MaterialAppData(
-          theme: ThemeData(
-            primarySwatch: Colors.red,
-          ),
-          darkTheme: ThemeData.dark(),
+        theme: ThemeData(
+          primarySwatch: Colors.red,
         ),
+        darkTheme: ThemeData.dark(),
+      ),
       ios: (_) => CupertinoAppData(),
       home: BasicScaffold(title),
     );

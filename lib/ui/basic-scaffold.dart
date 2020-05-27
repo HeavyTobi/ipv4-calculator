@@ -1,8 +1,9 @@
-import 'package:IPv4Calculator/content/base-content.dart';
 import 'package:IPv4Calculator/util/os-util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+
+import 'content/base-content.dart';
 
 class BasicScaffold extends StatelessWidget {
   BasicScaffold(this.title, {Key key}) : super(key: key);
