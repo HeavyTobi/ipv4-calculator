@@ -6,7 +6,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class BaseApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final String title = 'IPv4 Calculator';
+    final title = 'IPv4 Calculator';
 
     return PlatformApp(
       title: title,
