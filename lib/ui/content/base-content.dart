@@ -75,24 +75,9 @@ class _BaseContentState extends State<BaseContent> {
                     if (subnetMaskSize < 0 ||
                         subnetMaskSize > 31 ||
                         !IpUtil.verifyIp(ip))
-                      {
-                        showPlatformDialog(
-                          context: context,
-                          builder: (_) => PlatformAlertDialog(
-                            title: Text('Invalid data entered'),
-                            content: Text(
-                              'IP address is ${IpUtil.verifyIp(ip) ? "valid" : "invalid"} \n' +
-                                  'Subnet mask is ${subnetMaskSize > 0 && subnetMaskSize < 31 ? "valid" : "invalid"}',
-                            ),
-                            actions: <Widget>[
-                              PlatformDialogAction(
-                                child: Text('OK'),
-                                onPressed: () => Navigator.pop(context),
-                              ),
-                            ],
-                          ),
-                        )
-                      }
+                      showErrorDialog()
+                    else
+                      calculateAndShow()
                   },
                 ),
               )
@@ -101,5 +86,28 @@ class _BaseContentState extends State<BaseContent> {
         );
       },
     );
+  }
+
+  void showErrorDialog() {
+    showPlatformDialog(
+      context: context,
+      builder: (_) => PlatformAlertDialog(
+        title: Text('Invalid data entered'),
+        content: Text(
+          'IP address is ${IpUtil.verifyIp(ip) ? "valid" : "invalid"} \n' +
+              'Subnet mask is ${subnetMaskSize > 0 && subnetMaskSize < 31 ? "valid" : "invalid"}',
+        ),
+        actions: <Widget>[
+          PlatformDialogAction(
+            child: Text('OK'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void calculateAndShow() {
+    // TODO: show form with network data
   }
 }
