@@ -1,4 +1,5 @@
 import 'package:IPv4Calculator/ui/basic-scaffold.dart';
+import 'package:IPv4Calculator/ui/content/pages/network-result-page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -18,6 +19,9 @@ class BaseApp extends StatelessWidget {
       ),
       ios: (_) => CupertinoAppData(),
       home: BasicScaffold(title),
+      routes: {
+        '/networkResult': (final BuildContext context) => NetworkResultPage()
+      },
     );
   }
 }

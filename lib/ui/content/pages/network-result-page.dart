@@ -3,21 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class NetworkResultPage extends StatelessWidget {
-  final String ip;
-  final int subnetMask;
-
-  get ipComplete => '$ip/$subnetMask';
-
-  NetworkResultPage({
-    @required this.ip,
-    @required this.subnetMask,
-  });
-
   @override
   Widget build(BuildContext context) {
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final String ip = routeArgs['ip'];
+    final int subnetMask = routeArgs['subnetMask'];
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text('Network for $ipComplete'),
+        title: Text('Network for $ip/$subnetMask'),
       ),
       body: NetworkResult(
         ip: ip,
