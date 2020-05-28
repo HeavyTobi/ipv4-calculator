@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:IPv4Calculator/ui/content/pages/network-result-page.dart';
 import 'package:IPv4Calculator/util/ip-util.dart';
+import 'package:IPv4Calculator/util/os-util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -77,7 +79,7 @@ class _BaseContentState extends State<BaseContent> {
                         !IpUtil.verifyIp(ip))
                       showErrorDialog()
                     else
-                      calculateAndShow()
+                      calculateAndShow(context)
                   },
                 ),
               )
@@ -107,7 +109,18 @@ class _BaseContentState extends State<BaseContent> {
     );
   }
 
-  void calculateAndShow() {
-    // TODO: show form with network data
+  void calculateAndShow(final BuildContext context) {
+    Navigator.of(context).push(
+      OsUtil.isMacOrIOS()
+          ? CupertinoPageRoute(
+              builder: (final BuildContext ctx) =>
+                  NetworkResultPage(ip: ip, subnetMask: subnetMaskSize),
+            )
+          : MaterialPageRoute(
+              builder: (final BuildContext context) => NetworkResultPage(
+                    ip: ip,
+                    subnetMask: subnetMaskSize,
+                  )),
+    );
   }
 }
