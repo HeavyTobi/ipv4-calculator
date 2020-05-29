@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:IPv4Calculator/util/ip-util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +40,6 @@ class _BaseContentState extends State<BaseContent> {
                   ),
                   onChanged: (String ip) {
                     this.ip = ip;
-                    log(ip);
                   },
                 ),
               ),
@@ -71,14 +68,7 @@ class _BaseContentState extends State<BaseContent> {
                 child: PlatformButton(
                   child: PlatformText('Calculate'),
                   cupertinoFilled: (_, __) => CupertinoFilledButtonData(),
-                  onPressed: () => {
-                    if (subnetMaskSize < 0 ||
-                        subnetMaskSize > 31 ||
-                        !IpUtil.verifyIp(ip))
-                      showErrorDialog()
-                    else
-                      calculateAndShow(context)
-                  },
+                  onPressed: () => calculateAndShow(context),
                 ),
               )
             ],
@@ -108,6 +98,10 @@ class _BaseContentState extends State<BaseContent> {
   }
 
   void calculateAndShow(final BuildContext context) {
+    if (subnetMaskSize < 0 || subnetMaskSize > 31 || !IpUtil.verifyIp(ip)) {
+      showErrorDialog();
+      return;
+    }
     Navigator.of(context).pushNamed('/networkResult',
         arguments: {'ip': ip, 'subnetMask': subnetMaskSize});
   }

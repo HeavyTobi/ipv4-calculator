@@ -11,6 +11,27 @@ class NetworkResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return LayoutBuilder(
+      builder: (
+        BuildContext context,
+        BoxConstraints viewportConstraints,
+      ) {
+        return ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  'Network ID: ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ]);
+      },
+    );
   }
 }
