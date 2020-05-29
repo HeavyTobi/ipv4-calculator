@@ -13,24 +13,27 @@ class IPWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(
-          name,
-          style: PlatformTextTheme.of(context).h4,
-        ),
-        Text(
-          ipAddress.ip,
-          style: PlatformTextTheme.of(context).blockBig,
-        ),
-        Text(
-          '${ipAddress.blocks[0].toRadixString(2).padLeft(8, '0')}.'
-          '${ipAddress.blocks[1].toRadixString(2).padLeft(8, '0')}.'
-          '${ipAddress.blocks[2].toRadixString(2).padLeft(8, '0')}.'
-          '${ipAddress.blocks[3].toRadixString(2).padLeft(8, '0')}',
-          style: PlatformTextTheme.of(context).block,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 24),
+      child: Column(
+        children: <Widget>[
+          Text(
+            name,
+            style: PlatformTextTheme.of(context).h4,
+          ),
+          Text(
+            ipAddress.ip,
+            style: PlatformTextTheme.of(context).blockBig,
+          ),
+          Text(
+            '${ipAddress.blocks[0].toRadixString(2).padLeft(8, '0')}.'
+            '${ipAddress.blocks[1].toRadixString(2).padLeft(8, '0')}.'
+            '${ipAddress.blocks[2].toRadixString(2).padLeft(8, '0')}.'
+            '${ipAddress.blocks[3].toRadixString(2).padLeft(8, '0')}',
+            style: PlatformTextTheme.of(context).block,
+          ),
+        ],
+      ),
     );
   }
 }
