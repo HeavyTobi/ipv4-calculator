@@ -34,8 +34,24 @@ class _NetworkResultState extends State<NetworkResult> {
             child: Column(
               children: <Widget>[
                 IPWidget(
+                  name: 'Network ID',
+                  ipAddress: network.netId,
+                ),
+                IPWidget(
                   name: 'Subnet mask',
                   ipAddress: network.subnetMask,
+                ),
+                IPWidget(
+                  name: 'First host',
+                  ipAddress: network.firstHost,
+                ),
+                IPWidget(
+                  name: 'Last host',
+                  ipAddress: network.lastHost,
+                ),
+                IPWidget(
+                  name: 'Broadcast',
+                  ipAddress: network.broadcast,
                 ),
               ],
             ),
