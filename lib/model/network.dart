@@ -13,4 +13,9 @@ class Network {
       this.lastHost,
       this.broadcast,
       this.subnetMask});
+
+  Network.fromIPAndSubnet(final String ip, final int subnetMask) {
+    // TODO: implement
+    this.subnetMask = IPAddress.fromSubnetMask(subnetMask);
+  }
 }

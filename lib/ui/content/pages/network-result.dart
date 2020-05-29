@@ -1,6 +1,8 @@
+import 'package:IPv4Calculator/model/network.dart';
+import 'package:IPv4Calculator/ui/content/pages/ip-widget.dart';
 import 'package:flutter/material.dart';
 
-class NetworkResult extends StatelessWidget {
+class NetworkResult extends StatefulWidget {
   final String ip;
   final int subnetMask;
 
@@ -8,6 +10,16 @@ class NetworkResult extends StatelessWidget {
     @required this.ip,
     @required this.subnetMask,
   });
+
+  @override
+  _NetworkResultState createState() =>
+      _NetworkResultState(Network.fromIPAndSubnet(ip, subnetMask));
+}
+
+class _NetworkResultState extends State<NetworkResult> {
+  Network network;
+
+  _NetworkResultState(this.network);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +31,12 @@ class NetworkResult extends StatelessWidget {
         return ListView(padding: const EdgeInsets.all(8), children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
+            child: Column(
               children: <Widget>[
-                Text(
-                  'Network ID: ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
+                IPWidget(
+                  name: 'Subnet mask',
+                  ipAddress: network.subnetMask,
+                ),
               ],
             ),
           ),

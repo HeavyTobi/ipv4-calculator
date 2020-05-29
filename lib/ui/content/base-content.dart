@@ -16,63 +16,60 @@ class _BaseContentState extends State<BaseContent> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Please enter an IP address and a subnet mask to calculate network details',
-                ),
+        return ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Please enter an IP address and a subnet mask to calculate network details',
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PlatformTextField(
-                  material: (_, __) => MaterialTextFieldData(
-                    keyboardType: TextInputType.numberWithOptions(),
-                    decoration: InputDecoration(
-                      hintText: 'IP Address',
-                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PlatformTextField(
+                material: (_, __) => MaterialTextFieldData(
+                  keyboardType: TextInputType.numberWithOptions(),
+                  decoration: InputDecoration(
+                    hintText: 'IP Address',
                   ),
-                  cupertino: (_, __) => CupertinoTextFieldData(
-                    placeholder: 'IP Address',
-                  ),
-                  onChanged: (String ip) {
-                    this.ip = ip;
-                  },
                 ),
+                cupertino: (_, __) => CupertinoTextFieldData(
+                  placeholder: 'IP Address',
+                ),
+                onChanged: (String ip) {
+                  this.ip = ip;
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PlatformTextField(
-                  material: (_, __) => MaterialTextFieldData(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      hintText: 'Subnet mask (short)',
-                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PlatformTextField(
+                material: (_, __) => MaterialTextFieldData(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Subnet mask (short)',
                   ),
-                  cupertino: (_, __) => CupertinoTextFieldData(
-                    placeholder: 'Subnet mask (short)',
-                    keyboardType: TextInputType.number,
-                  ),
-                  onChanged: (String snm) {
-                    try {
-                      this.subnetMaskSize = int.parse(snm);
-                    } catch (FormatException) {}
-                  },
                 ),
+                cupertino: (_, __) => CupertinoTextFieldData(
+                  placeholder: 'Subnet mask (short)',
+                  keyboardType: TextInputType.number,
+                ),
+                onChanged: (String snm) {
+                  try {
+                    this.subnetMaskSize = int.parse(snm);
+                  } catch (FormatException) {}
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PlatformButton(
-                  child: PlatformText('Calculate'),
-                  cupertinoFilled: (_, __) => CupertinoFilledButtonData(),
-                  onPressed: () => calculateAndShow(context),
-                ),
-              )
-            ],
-          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PlatformButton(
+                child: PlatformText('Calculate'),
+                cupertinoFilled: (_, __) => CupertinoFilledButtonData(),
+                onPressed: () => calculateAndShow(context),
+              ),
+            )
+          ],
         );
       },
     );
